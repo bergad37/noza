@@ -1,0 +1,38 @@
+{
+  "name": "nozatechhouse_backend",
+  "version": "1.0.0",
+  "description": "noza techchouse portfolio backend",
+  "keywords": [
+    "nozatechhouse",
+    "solutions",
+    "that",
+    "matters",
+    "customer",
+    "support",
+    "solutions",
+    "that",
+    "makes",
+    "sense"
+  ],
+  "homepage": "https://github.com/bergad37/noza#readme",
+  "bugs": {
+    "url": "https://github.com/bergad37/noza/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bergad37/noza.git"
+  },
+  "license": "ISC",
+  "author": "bertrand",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
