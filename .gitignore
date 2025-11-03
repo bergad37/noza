@@ -1,2 +1,9 @@
 node_modules
 .env
+
+/src/generated/prisma
+Library/
+.npm-cache/
+.cache/
+.npm/
+dist
