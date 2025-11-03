@@ -1,5 +1,5 @@
 import express from 'express';
-import { AuthRouter } from './authRoute.ts';
+import { AuthRouter } from './auth.route.ts';
 
 const ApiRouter = express.Router();
 

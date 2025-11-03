@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import {
   loginController,
   registerUserController
-} from '../controllers/authController.ts';
+} from '../controllers/auth.controller.ts';
 
 export function AuthRouter(apiRouter: Router) {
   apiRouter.post('/signup', registerUserController);

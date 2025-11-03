@@ -12,9 +12,9 @@
     "emitDecoratorMetadata": true,
     "useDefineForClassFields": false,
     "allowImportingTsExtensions": true,
-  "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts", "src/types/**/*.d.ts"]
 }
