@@ -8,7 +8,12 @@
     "dev": "nodemon",
     "build": "tsc",
     "start": "node --loader ts-node/esm src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create": "node --loader ts-node/esm src/cli.ts",
+    "db:migration:create": "node --loader ts-node/esm node_modules/typeorm/cli.js migration:create",
+    "db:generate": "node --loader ts-node/esm node_modules/typeorm/cli.js migration:generate --esm -d src/data-source.ts",
+    "db:migrate": "node --loader ts-node/esm node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
+    "db:revert": "node --loader ts-node/esm node_modules/typeorm/cli.js migration:revert -d src/data-source.ts"
   },
   "repository": {
     "type": "git",
