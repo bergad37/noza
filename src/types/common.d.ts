@@ -1,4 +1,5 @@
-declare namespace Main {
+interface IContext {}
+declare namespace NZ {
   interface IBase {
     createdAt?: Date;
     updateAt?: Date;

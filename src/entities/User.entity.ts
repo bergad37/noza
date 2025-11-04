@@ -3,11 +3,14 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  ObjectLiteral,
+  Repository
 } from 'typeorm';
+import { BaseEntity } from './base.entity.ts';
 
 @Entity({ name: 'users' })
-export class User {
+export class User extends BaseEntity<User> implements NZ.IBase {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
