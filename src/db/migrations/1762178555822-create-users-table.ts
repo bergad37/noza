@@ -12,14 +12,14 @@ export class CreateUsersTable1762178555822 implements MigrationInterface {
             CREATE TABLE "users" (
                 "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
                 "name" character varying NOT NULL,
-                "profileImage" character varying,
-                "phoneNumber" character varying NOT NULL,
+                "profile_image" character varying,
+                "phone_number" character varying NOT NULL,
                 "email" character varying NOT NULL,
                 "password" character varying NOT NULL,
                 "role" character varying NOT NULL DEFAULT 'user',
-                "isActive" boolean NOT NULL DEFAULT true,
-                "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
-                "updatedAt" TIMESTAMP NOT NULL DEFAULT now(),
+                "is_active" boolean NOT NULL DEFAULT true,
+                "created_at" TIMESTAMP NOT NULL DEFAULT now(),
+                "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
                 CONSTRAINT "UQ_users_email" UNIQUE ("email"),
                 CONSTRAINT "PK_users" PRIMARY KEY ("id")
             )

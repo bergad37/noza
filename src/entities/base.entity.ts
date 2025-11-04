@@ -19,11 +19,6 @@ export abstract class BaseEntity<T extends ObjectLiteral>
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: 'uuid', nullable: true })
-  createdBy!: string;
-
-  @Column({ type: 'uuid', nullable: true })
-  updatedBy!: string;
 
   @Index()
   @CreateDateColumn({
@@ -39,11 +34,4 @@ export abstract class BaseEntity<T extends ObjectLiteral>
     nullable: false
   })
   updatedAt!: Date;
-
-  @DeleteDateColumn({
-    name: 'deleted_at',
-    type: 'timestamptz',
-    nullable: true
-  })
-  deleteAt!: Date;
 }

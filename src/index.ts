@@ -1,11 +1,10 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import ApiRouter from './routes/index.ts';
 import bodyParser from 'body-parser';
 import ResponseTime from 'response-time';
 import cors from 'cors';
 import { AppDataSource } from './data-source.ts';
-
+import authRoute from './routes/auth.route.ts';
 dotenv.config();
 
 const app = express();
@@ -31,4 +30,5 @@ AppDataSource.initialize()
     console.log('Database connection error:', error);
   });
 
-app.use('/api', ApiRouter);
+
+app.use('/api/auth', authRoute);

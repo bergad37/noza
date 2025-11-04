@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 dotenv.config();
 
@@ -14,5 +15,6 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: ['warn', 'error'],
   entities: ['**/entities/**/*.entity.ts'],
-  migrations: ['**/db/migrations/**/*.ts']
+  migrations: ['**/db/migrations/**/*.ts'],
+  namingStrategy: new SnakeNamingStrategy()
 });

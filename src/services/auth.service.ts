@@ -1,12 +1,12 @@
 import { FindOptions } from 'typeorm';
-import { User } from '../entities/User.entity';
+import { User } from '../entities/User.entity.ts';
 import {
   createInstance,
   deleteInstance,
   findManyInstances,
   findOneInstance,
   updateOneInstance
-} from './base.service';
+} from './base.service.ts';
 
 export async function createUser(
   ctx: IContext,
@@ -37,7 +37,7 @@ export async function readUserByEmail(
 
 export async function readAllUsers(ctx: IContext): Promise<NZ.IUser[]> {
   return <NZ.IUser[]>await findManyInstances(ctx, User, {
-    relations: ['UserOwner'],
+    // relations: ['UserOwner'],
     select: {
       UserOwner: {
         firstName: true,

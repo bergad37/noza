@@ -1,8 +1,8 @@
-import express from 'express';
-import { AuthRouter } from './auth.route.ts';
+// import express from 'express';
+// import { AuthRouter } from './auth.route.ts';
 
-const ApiRouter = express.Router();
+// const ApiRouter = express.Router();
 
-AuthRouter(ApiRouter);
+// AuthRouter(ApiRouter);
 
-export default ApiRouter;
+// export default ApiRouter;

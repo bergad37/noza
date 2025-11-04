@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import pkg from 'lodash';
 import {
   DeepPartial,
   EntityTarget,
@@ -8,6 +8,8 @@ import {
   Repository
 } from 'typeorm';
 import { AppDataSource } from '../data-source.ts';
+
+const { isEqual } = pkg;
 
 export function getEntityRepository<T extends ObjectLiteral>(
   entity: EntityTarget<T>
