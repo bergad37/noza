@@ -9,6 +9,7 @@ declare namespace NZ {
     id?: string;
     name: string;
     profileImage?: string;
+    password?: string;
     phoneNumber: string;
     email: string;
     role: string;
