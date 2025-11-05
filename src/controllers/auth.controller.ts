@@ -10,7 +10,6 @@ import {
 export async function registerUser(req: Request, res: any) {
   try {
     const { email } = req.body;
-
     const existingUser = await readUserByEmail({}, email);
 
     if (existingUser) {
