@@ -37,7 +37,6 @@ export async function readUserByEmail(
 
 export async function readAllUsers(ctx: IContext): Promise<NZ.IUser[]> {
   return <NZ.IUser[]>await findManyInstances(ctx, User, {
-    // relations: ['UserOwner'],
     select: {
       UserOwner: {
         firstName: true,
