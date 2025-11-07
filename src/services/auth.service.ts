@@ -49,8 +49,8 @@ export async function readAllUsers(ctx: IContext): Promise<NZ.IUser[]> {
 
 export async function updateUser(
   ctx: IContext,
+  data: Partial<NZ.IUser>,
   id: string,
-  data: Partial<NZ.IUser>
 ): Promise<NZ.IUser> {
   return <NZ.IUser>await updateOneInstance(
     ctx,

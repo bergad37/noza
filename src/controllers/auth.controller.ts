@@ -64,3 +64,32 @@ export async function loginController(req: Request, res: any) {
     res.status(500).send({ success: false, message: error.message });
   }
 }
+
+export async function changeUserPassword(
+  ctx: IContext,
+  req: Request,
+  res: any
+) {
+  try {
+    const { newPassword, confirmPassword } = req.body;
+    const isPasswordMatch = newPassword === confirmPassword;
+
+    if (!isPasswordMatch) {
+      throw new Error(
+        'The confirmation password does not match the new password.'
+      );
+    }
+    const hashNewPassword = hashPassword(newPassword);
+
+    res.status(200).json({
+      success: true,
+      data: null,
+      message: 'Your password has been changed successfully.'
+    });
+  } catch (error: any) {
+    res
+      .status(error.statusCode || 500)
+      .send({ success: false, message: error?.message });
+  }
+}
+

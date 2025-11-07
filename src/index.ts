@@ -5,6 +5,7 @@ import ResponseTime from 'response-time';
 import cors from 'cors';
 import { AppDataSource } from './data-source.ts';
 import authRoute from './routes/auth.route.ts';
+import userRoute from './routes/user.route.ts';
 import { v2 as cloudinary } from 'cloudinary';
 import type { UploadApiOptions } from 'cloudinary';
 import multer from 'multer';
@@ -52,6 +53,8 @@ AppDataSource.initialize()
   });
 
 app.use('/api/auth', authRoute);
+app.use('/api/user', userRoute);
+
 app.use('/api/upload', upload.single('image'), (req, res) => {
   try {
     res.json({ url: req.file?.path });
