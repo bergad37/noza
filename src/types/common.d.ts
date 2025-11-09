@@ -15,4 +15,12 @@ declare namespace NZ {
     role: string;
     isActive?: boolean;
   }
+
+ interface IEmailData {
+   subject: string;
+   recipientName?: string;
+   senderName?: string;
+   bodyMessage: string;
+ }
+
 }

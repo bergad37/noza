@@ -1,5 +1,9 @@
 import { Request } from 'express';
-import { createUser, readUserByEmail } from '../services/auth.service.ts';
+import {
+  createUser,
+  readUserByEmail,
+  updateUser
+} from '../services/auth.service.ts';
 import {
   comparePassword,
   generateJWT,
@@ -71,7 +75,7 @@ export async function changeUserPassword(
   res: any
 ) {
   try {
-    const { newPassword, confirmPassword } = req.body;
+    const { newPassword, confirmPassword, email } = req.body;
     const isPasswordMatch = newPassword === confirmPassword;
 
     if (!isPasswordMatch) {
@@ -79,7 +83,16 @@ export async function changeUserPassword(
         'The confirmation password does not match the new password.'
       );
     }
-    const hashNewPassword = hashPassword(newPassword);
+
+    const existingUser = await readUserByEmail({}, email);
+
+    if (!existingUser) {
+      throw new Error('The email is not registered.Please sign up!');
+    }
+
+    const hashNewPassword = await hashPassword(newPassword);
+
+    await updateUser({}, { password: hashNewPassword }, existingUser.id!);
 
     res.status(200).json({
       success: true,
@@ -93,3 +106,24 @@ export async function changeUserPassword(
   }
 }
 
+export async function forgotPasswordResetLink(req: Request, res: any) {
+  const { email } = req.body;
+
+  const existingUser = await readUserByEmail({}, email);
+
+  if (!existingUser) {
+    throw new Error('The email is not registered.Please sign up!');
+  }
+
+  //Generate user token
+  const verificationToken = await generateJWT({
+    userId: existingUser.id!,
+    email: existingUser.email,
+    name: existingUser.name
+  });
+
+  // * Todo
+
+  //Send the token in the email and the frontend will verify it
+  //
+}
