@@ -10,6 +10,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import type { UploadApiOptions } from 'cloudinary';
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { Logger } from './utils/winston.logger.ts';
 
 dotenv.config();
 
@@ -45,11 +46,11 @@ const PORT = process.env.PORT || 5000;
 
 AppDataSource.initialize()
   .then(() => {
-    console.log('Database connected');
+    Logger.info('Database connected');
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((error) => {
-    console.log('Database connection error:', error);
+    Logger.info('Database connection error:', error);
   });
 
 app.use('/api/auth', authRoute);

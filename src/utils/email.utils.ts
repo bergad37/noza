@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import { isNil } from 'lodash';
 import dotenv from 'dotenv';
+import { Logger } from './winston.logger';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -19,7 +20,7 @@ export async function sendEmail(
   data: NZ.IEmailData
 ): Promise<boolean> {
   if (isNil(data.bodyMessage)) {
-    console.log('Could not find email body');
+    Logger.error('Could not find email body');
     return Promise.resolve(false);
   }
 
@@ -33,9 +34,9 @@ export async function sendEmail(
   return new Promise((resolve) => {
     transporter.sendMail(options, (error: any, info: any) => {
       if (error) {
-        console.error(`couldn't send mail ${error}`);
+        Logger.error(`couldn't send mail ${error}`);
       } else {
-        console.info(`Message sent: ${JSON.stringify(info)}`);
+        Logger.info(`Message sent: ${JSON.stringify(info)}`);
       }
       resolve(true);
     });
