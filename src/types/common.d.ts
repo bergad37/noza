@@ -1,4 +1,17 @@
-interface IContext {}
+interface IContext {
+  userId?: string;
+  email?: string;
+  name?: string;
+  role?: string;
+  [key: string]: any; // Allow additional properties from decodedToken (e.g., iat, exp)
+}
+
+declare namespace Express {
+  interface Request {
+    ctx?: IContext;
+  }
+}
+
 declare namespace NZ {
   interface IBase {
     createdAt?: Date;
@@ -16,11 +29,10 @@ declare namespace NZ {
     isActive?: boolean;
   }
 
- interface IEmailData {
-   subject: string;
-   recipientName?: string;
-   senderName?: string;
-   bodyMessage: string;
- }
-
+  interface IEmailData {
+    subject: string;
+    recipientName?: string;
+    senderName?: string;
+    bodyMessage: string;
+  }
 }
