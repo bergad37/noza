@@ -30,3 +30,15 @@ export async function deactivateUserProfile(req: Request, res: any) {
       .send({ success: false, message: error?.message });
   }
 }
+
+export async function activateUserProfile(req: Request, res: any) {
+  try {
+    const { userId } = req.params;
+
+    return await updateUser({}, { isActive: true }, userId);
+  } catch (error: any) {
+    res
+      .status(error.statusCode || 500)
+      .send({ success: false, message: error?.message });
+  }
+}
